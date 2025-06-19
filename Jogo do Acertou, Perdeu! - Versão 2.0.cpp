@@ -40,7 +40,7 @@ int main(){
 			}else if(num == numOcult){
 				cout << "Jogador " << nomes[i] << " perdeu!";
 				cancelar = false;
-				i = jogadores + 1;
+				i = jogadores;
 			}
 		}
 	}
