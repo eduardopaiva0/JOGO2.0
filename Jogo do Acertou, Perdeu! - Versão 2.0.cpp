@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-	int numOcult,jogadores,numMin,numMax,cont,num;
+	int numOcult,jogadores,numMin,numMax,num;
 	bool cancelar = true;
 	numMin = 1;
 	numMax = 100;
@@ -13,7 +13,11 @@ int main(){
 			cout << "Apenas valores entre 2 e 5." << endl;
 		}
 	}while(jogadores < 2 || jogadores > 5);
-	
+	string nomes[jogadores];
+	for(int i = 0;i < jogadores;i++){
+		cout << "Digite o nome do " << ++i << ". jogador: ";
+		cin >> nomes[--i];
+	}
 	do{
 		cout << "Digite o valor do numero oculto: ";
 		cin >> numOcult;
@@ -22,8 +26,8 @@ int main(){
 		}
 	}while(numOcult < 1 || numOcult > 100);
 	while(cancelar){
-		for(int i = 1;i <= jogadores;i++){
-			cout << "Jogador " << i << ". digite o valor do numero entre " << numMin << " e " << numMax << ": ";
+		for(int i = 0;i < jogadores;i++){
+			cout << "Jogador " << nomes[i] << " digite o valor do numero entre " << numMin << " e " << numMax << ": ";
 			cin >> num;
 			if(num <= numMin || num >= numMax){
 				cout << "Digite o valor dentro do intervalo dos numeros." << endl;
@@ -33,8 +37,8 @@ int main(){
 				numMin = num;
 			}else if(num <= numMax && num > numOcult){
 				numMax = num;
-			}else{
-				cout << "Jogador " << i << " perdeu!";
+			}else if(num == numOcult){
+				cout << "Jogador " << nomes[i] << " perdeu!";
 				cancelar = false;
 				i = jogadores + 1;
 			}
